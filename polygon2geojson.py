@@ -29,10 +29,10 @@ def write_geojson(data, polygon_filename):
     geojson_filename = polygon_filename.split('.')[0] + ".geojson"
     remove_file(geojson_filename)
 
-    schema = {'geometry': 'Polygon','properties': {}}
+    schema = {'geometry': 'Polygon', 'properties': {}}
 
     with fiona.open(geojson_filename, 'w', 'GeoJSON', schema) as output:
-        output.write({'geometry':mapping(Polygon(data)), 'properties':{}})
+        output.write({'geometry': mapping(Polygon(data)), 'properties': {}})
 
 
 def main(polygon_filename):
