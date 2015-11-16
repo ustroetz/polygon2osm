@@ -25,8 +25,8 @@ def clean_poylgon(polygon_data):
     return coordinates
 
 
-def write_geojson(data):
-    geojson_filename = 'activity.geojson'
+def write_geojson(data, polygon_filename):
+    geojson_filename = polygon_filename.split('.')[0] + ".geojson"
     remove_file(geojson_filename)
 
     schema = {'geometry': 'Polygon','properties': {}}
@@ -38,7 +38,7 @@ def write_geojson(data):
 def main(polygon_filename):
     polygon_data = read_polygon(polygon_filename)
     coordinates = clean_poylgon(polygon_data)
-    write_geojson(coordinates)
+    write_geojson(coordinates, polygon_filename)
 
 
 if __name__ == "__main__":
