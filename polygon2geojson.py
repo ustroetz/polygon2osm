@@ -1,3 +1,5 @@
+#!/usr/bin/python
+import re
 import argparse
 import os
 import fiona
@@ -18,7 +20,7 @@ def read_polygon(polygon_filename):
 
 def clean_poylgon(polygon_data):
     coordinates = polygon_data[2:][:-2]
-    coordinates = [item.split('   ') for item in coordinates]
+    coordinates = [re.split(r'[\s\t]+', item) for item in coordinates]
     coordinates = [filter(None, item) for item in coordinates]
     coordinates = [(float(item[0]), float(item[1])) for item in coordinates]
 
